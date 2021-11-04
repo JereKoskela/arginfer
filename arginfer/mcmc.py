@@ -5,6 +5,7 @@ from tqdm import tqdm
 import sys
 import os
 import shutil
+import tskit
 from arginfer.initialARG import *
 from arginfer.plots import *
 # for recursion issue
@@ -3039,9 +3040,9 @@ def infer_sim(
     """
     if ts_full !=None:#else real data
         try:
-            ts_full = msprime.load(ts_full.name) #trees is a fh
+            ts_full = tskit.load(ts_full.name) #trees is a fh
         except AttributeError:
-            ts_full = msprime.load(ts_full)
+            ts_full = tskit.load(ts_full)
     else:
         IOError("ts_full is required")
     # random.seed(args.random_seed)

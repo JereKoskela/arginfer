@@ -94,9 +94,9 @@ def run_mcmc(args):
     tsfull = None
     if args.tsfull !=None:#else real data
         try:
-            tsfull = msprime.load(args.tsfull.name) #trees is a fh
+            tsfull = tskit.load(args.tsfull.name) #trees is a fh
         except AttributeError:
-            tsfull = msprime.load(args.tsfull)
+            tsfull = tskit.load(args.tsfull)
     # random.seed(args.random_seed)
     # np.random.seed(args.random_seed+1)
     mcmc = MCMC(tsfull, n, Ne, seq_length, mu, r,
